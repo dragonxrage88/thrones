@@ -24,6 +24,23 @@ const createEvents = () => {
   }
 };
 
+const sortPeople = (e) => {
+  const house = e.target.id;
+  if(house === 'All'){
+    charactersBuilder(characters);
+  } else {
+    const filteredPeeps = characters.filter(x => x.house === house);
+    charactersBuilder(filteredPeeps);
+  }
+};
+
+const sortEvents = () => {
+const allButton = document.getElementById('All');
+const starkButton = document.getElementById('Stark');
+allButton.addEventListener('click', sortPeople);
+starkButton.addEventListener('click', sortPeople);
+};
+
 const charactersBuilder = (charactersArray) => {
   let domString = '';
   charactersArray.forEach((character) => {
@@ -40,4 +57,4 @@ const charactersBuilder = (charactersArray) => {
   createEvents();
 };
 
-export {charactersBuilder, setCharacters, getCharacterz};
+export {charactersBuilder, setCharacters, getCharacterz, sortEvents};
